@@ -11,6 +11,7 @@ public abstract class Evento {
 	private int richiestePosti;
 
 	protected Evento(String titolo, Long postiTotali, LocalDate dataConcerto) {
+		this.titolo=titolo;
 		this.numeriPostiPrenotati = 0;
 		this.postiTotali = postiTotali;
 		this.dataConcerto = dataConcerto;
