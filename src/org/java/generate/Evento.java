@@ -4,7 +4,7 @@ import java.time.LocalDate;
   	
 import java.lang.Comparable;
 
-public abstract class Evento implements Comparable<Evento> {
+public class Evento implements Comparable<Evento> {
 
 	private String titolo;
 	private long postiTotali;
