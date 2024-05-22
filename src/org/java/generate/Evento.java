@@ -61,17 +61,18 @@ public abstract class Evento implements Comparable<Evento> {
 
 	// disdici: riduce di uno i posti prenotati.
 	public void disdici(LocalDate dataOdierna, int richiestePosti) {
-		if (postiTotali <= 0 && !isAfterDate(dataOdierna)) {
-			System.out.print("Non ci sono prenotazioni");
-		} else {
-			numeriPostiPrenotati -= richiestePosti;
-
-		}
-
+		
+			if (postiTotali <= 0 || !isAfterDate(dataOdierna)) {
+				System.out.print("Non ci sono prenotazioni");
+			} else {
+				numeriPostiPrenotati -= richiestePosti;
+			}
 	}
+	
+	
 	@Override
-	public int compareTo(LocalDate Date) {//??? come mai non accetta il ComparTo?
-		if(this.dataConcerto.isAfter(Date)) {
+	public int compareTo(Evento evento) {//??? come mai non accetta il ComparTo?
+		if(this.dataConcerto.isAfter(evento.getDataConcerto())) {
 			return +1;
 		}else {return -1;}	
 	
