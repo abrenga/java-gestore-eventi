@@ -1,8 +1,10 @@
 package org.java.generate;
 
 import java.time.LocalDate;
+  	
+import java.lang.Comparable;
 
-public abstract class Evento {
+public abstract class Evento implements Comparable<Evento> {
 
 	private String titolo;
 	private long postiTotali;
@@ -67,6 +69,14 @@ public abstract class Evento {
 		}
 
 	}
+	@Override
+	public int compareTo(LocalDate Date) {//??? come mai non accetta il ComparTo?
+		if(this.dataConcerto.isAfter(Date)) {
+			return +1;
+		}else {return -1;}	
+	
+	}
+	
 
 	private Boolean isAfterDate(LocalDate dataOdierna) {
 		if (this.dataConcerto.isAfter(dataOdierna)) {
@@ -76,6 +86,8 @@ public abstract class Evento {
 		}
 
 	}
+	
+	
 
 	// venga restituita una stringa contenente: data formattata - titolo
 	@Override

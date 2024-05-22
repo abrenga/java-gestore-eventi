@@ -2,6 +2,7 @@ package org.java.generate;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -44,7 +45,8 @@ public class ProgrammEventi {
 	}
 
 	private List<Evento> paragonaLeDate() {
-		Evento DataPiuPiccola = eventi.get(0);
+		List<Evento> nuovoArray = new ArrayList<Evento>(eventi);
+		/*Evento DataPiuPiccola = eventi.get(0);
 		LocalDate dataTemp;
 		
 		List<Evento> nuovoArray = new ArrayList<Evento>(eventi);
@@ -61,6 +63,9 @@ public class ProgrammEventi {
 			}
 			
 		}
+		return nuovoArray;*/
+		
+		Collections.sort(nuovoArray);
 		return nuovoArray;
 	}
 	
