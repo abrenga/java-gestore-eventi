@@ -71,7 +71,7 @@ public class Evento implements Comparable<Evento> {
 	
 	
 	@Override
-	public int compareTo(Evento evento) {//??? come mai non accetta il ComparTo?
+	public int compareTo(Evento evento) {//il compareTo è un metodo che viene usato in un ArrayList di oggeti per comparare!
 		if(this.dataConcerto.isAfter(evento.getDataConcerto())) {
 			return +1;
 		}else {return -1;}	

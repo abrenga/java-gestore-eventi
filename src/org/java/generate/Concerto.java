@@ -40,7 +40,7 @@ public class Concerto extends Evento {
 	}
 	
 	
-	public String formattaPrezzo() {
+	private String formattaPrezzo() {
 		DecimalFormat prezzoFormattato = new DecimalFormat("##.##");
 		return prezzoFormattato.format(this.prezzo);
 		
@@ -50,7 +50,7 @@ public class Concerto extends Evento {
 
 	@Override
 	public String toString() {
-		return super.toString() + ora + prezzo;// ricordati di implemntare data e ora formattata - titolo - prezzo formattato
+		return super.toString() + ora + formattaPrezzo();// ricordati di implemntare data e ora formattata - titolo - prezzo formattato
 
 	}
 }
