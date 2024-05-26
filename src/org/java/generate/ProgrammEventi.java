@@ -46,47 +46,51 @@ public class ProgrammEventi {
 
 	private List<Evento> paragonaLeDate() {
 		List<Evento> nuovoArray = new ArrayList<Evento>(eventi);
-		/*Evento DataPiuPiccola = eventi.get(0);
-		LocalDate dataTemp;
-		
-		List<Evento> nuovoArray = new ArrayList<Evento>(eventi);
-		for (int i = 0; i < eventi.size(); i++) {
-			for(int y=i+1; y<eventi.size(); y++) {
-				if (nuovoArray.get(i).getDataConcerto().isAfter(nuovoArray.get(y).getDataConcerto())) {
-					DataPiuPiccola = nuovoArray.get(i);
-					nuovoArray.set(i, nuovoArray.get(y));
-					nuovoArray.set(y, DataPiuPiccola);					
-				} else {
-					continue;
-				}
-				
-			}
-			
-		}
-		return nuovoArray;*/
-		
+		/*
+		 * Evento DataPiuPiccola = eventi.get(0); LocalDate dataTemp;
+		 * 
+		 * List<Evento> nuovoArray = new ArrayList<Evento>(eventi); for (int i = 0; i <
+		 * eventi.size(); i++) { for(int y=i+1; y<eventi.size(); y++) { if
+		 * (nuovoArray.get(i).getDataConcerto().isAfter(nuovoArray.get(y).
+		 * getDataConcerto())) { DataPiuPiccola = nuovoArray.get(i); nuovoArray.set(i,
+		 * nuovoArray.get(y)); nuovoArray.set(y, DataPiuPiccola); } else { continue; }
+		 * 
+		 * }
+		 * 
+		 * } return nuovoArray;
+		 */
+
 		Collections.sort(nuovoArray);
 		return nuovoArray;
 	}
-	
-	/*if (arr[i] < arr[j]) {
-          int temp = arr[i];
-          arr[i] = arr[j];
-          arr[j] = temp;*/
-          //Bubble sort;
 
-	
-	@Override
-	public String toString(){
-		List<Evento> torna = paragonaLeDate();
-		String a="";
-		
-		for (int i = 0; i < torna.size(); i++) {
-		
-		 a += "Data: " + torna.get(i).getDataConcerto() + " - evento: " + torna.get(i).getTitolo()+"\n";
+	/*
+	 * if (arr[i] < arr[j]) { int temp = arr[i]; arr[i] = arr[j]; arr[j] = temp;
+	 */
+	// Bubble sort;
+	public Evento eventogiaEsistente(String nome) {
+		Evento eventoSelezionato = null;
+		for (int i = 0; i < eventi.size(); i++) {
+			if (nome.equals(eventi.get(i).getTitolo())) {
+				eventoSelezionato = eventi.get(i);
+			}
+
+		}
+		return eventoSelezionato;
 	}
 
+	@Override
+	public String toString() {
+		List<Evento> torna = paragonaLeDate();
+		String a = "";
+
+		for (int i = 0; i < torna.size(); i++) {
+
+			//a += "Data: " + torna.get(i).getDataConcerto() + " - evento: " + torna.get(i).getTitolo() + "\n";
+			a+=torna.get(i).toString()+"\n";
+		}
+
 		return a;
-}
+	}
 
 }

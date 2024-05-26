@@ -1,7 +1,7 @@
 package org.java.generate;
 
 import java.time.LocalDate;
-  	
+import java.time.format.DateTimeFormatter;
 import java.lang.Comparable;
 
 public class Evento implements Comparable<Evento> {
@@ -58,11 +58,19 @@ public class Evento implements Comparable<Evento> {
 		}
 
 	}
+	
+	public String formattaData() {
+		 
+	    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+	    String formattedDate = dataConcerto.format(myFormatObj);
+	    return formattedDate;
+	}
 
 	// disdici: riduce di uno i posti prenotati.
 	public void disdici(LocalDate dataOdierna, int richiestePosti) {
 		
-			if (postiTotali <= 0 || !isAfterDate(dataOdierna)) {
+			if (numeriPostiPrenotati <= 0 || !isAfterDate(dataOdierna)) {
 				System.out.print("Non ci sono prenotazioni");
 			} else {
 				numeriPostiPrenotati -= richiestePosti;
@@ -87,7 +95,6 @@ public class Evento implements Comparable<Evento> {
 		}
 
 	}
-	
 	
 
 	// venga restituita una stringa contenente: data formattata - titolo

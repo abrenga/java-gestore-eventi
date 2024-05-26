@@ -10,26 +10,14 @@ public class Main {
 
 	public static void main(String[] arvs) {
 		LocalDate dateOra = LocalDate.now();
-		
-		
-		Evento evento = initSteps.popolaEvento();
+
 		ProgrammEventi eventoProgrammato = new ProgrammEventi("Agenda Prenotazione");
 		initSteps.popolaAgendaEventi(eventoProgrammato);
-		List<Evento> ArrayListEventoPerData=  eventoProgrammato.listaDiEventi(dateOra);
-		eventoProgrammato.addEvento(evento); 
-		
-		initSteps.preferenzeUtente(evento,ArrayListEventoPerData,dateOra,eventoProgrammato);
-		
-		
+		List<Evento> ArrayListEventoPerData = eventoProgrammato.listaDiEventi(dateOra);
 
+		Evento e = initSteps.sceltaDelEventoDaParteDelTerminale(eventoProgrammato);
 
-		
-		
-	
-
-		
+		initSteps.scelteTerminaleDopoLaSelezioneDellEvento(e, ArrayListEventoPerData, dateOra, eventoProgrammato);
 	}
-
-
 
 }
