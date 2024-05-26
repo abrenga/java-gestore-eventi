@@ -5,13 +5,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
-class initSteps {
+class Steps {
 	static Scanner scanner = new Scanner(System.in);
 
-	public static void popolaAgendaEventi(ProgrammEventi AgendaEventi) {
+	public static void popolaProgrammaEventi(ProgrammaEventi AgendaEventi) {
 		Evento concertoSubsonica = new Concerto("Subsonica", 100000L, LocalDate.of(2027, 05, 28), 55.50f);
-		Evento concertoMetallica = new Concerto("Metallica", 1000050L, LocalDate.of(2027, 07, 20), 60.80f);
-		Evento concertoGigiDalessio = new Concerto("Gigi D'Alessio", 10050L, LocalDate.of(2021, 02, 28), 60.40f);
+		Evento concertoMetallica = new Concerto("Irama", 1000050L, LocalDate.of(2027, 07, 20), 60.80f);
+		Evento concertoGigiDalessio = new Concerto("Angelina Mango", 10050L, LocalDate.of(2021, 02, 28), 60.40f);
 		Evento concertoManeskin = new Concerto("Maneskin", 1000050L, LocalDate.of(2024, 07, 20), 60.50f);
 
 		AgendaEventi.addEvento(concertoMetallica);
@@ -21,7 +21,7 @@ class initSteps {
 
 	}
 
-	public static Evento cheTipologiaDiEvento(String tipologiaEvento) {
+	public static Evento creaEventoDaTipo(String tipologiaEvento) {
 		if (tipologiaEvento.equals("concerto")) {
 
 			System.out.println("nome Evento");
@@ -61,14 +61,14 @@ class initSteps {
 
 	}
 
-	public static Evento popolaEvento() {
+	public static Evento creaEvento() {
 		System.out.println("inserisci una nuova tipologia di Evento:");
 		String tipologiaEvento = scanner.nextLine();
-		return cheTipologiaDiEvento(tipologiaEvento);
+		return creaEventoDaTipo(tipologiaEvento);
 
 	}
 
-	private static boolean utenteVuoleConfermare(String x) {
+	private static boolean rispostaAffermativa(String x) {
 		if (x.equals("si")) {
 			return true;
 		} else {
@@ -76,7 +76,7 @@ class initSteps {
 		}
 	}
 
-	public static void VuoleLutenteEffettuarePrenotazione(Evento evento, LocalDate dataOra) {
+	public static void effettuaPrenotazione(Evento evento, LocalDate dataOra) {
 		System.out.println("quante prenotazioni vuoi effettuare?");
 
 		String preotazioniRicheste = scanner.nextLine();
@@ -95,7 +95,7 @@ class initSteps {
 		String vuoiDisdire = scanner.nextLine();
 		String generalResponse = vuoiDisdire.toLowerCase();
 
-		if (utenteVuoleConfermare(vuoiDisdire)) {
+		if (rispostaAffermativa(vuoiDisdire)) {
 			System.out.println("quante prenotazioni vuoi Disdire?");
 			String preotazioniDaDisdire = scanner.nextLine();
 			int uff = Integer.parseInt(preotazioniDaDisdire);
@@ -122,11 +122,11 @@ class initSteps {
 		System.out.println("[4] rimuovi eventi");
 	}
 
-	private static void selezionaCasi(Evento evento, List<Evento> arrayEventiDalavorare, LocalDate dateOra,
-			ProgrammEventi eventiProgrammati) {
+	private static void selezionaOpzioni(Evento evento, List<Evento> arrayEventiDalavorare, LocalDate dateOra,
+			ProgrammaEventi eventiProgrammati) {
 		switch (scanner.nextLine()) {
 		case "1":
-			VuoleLutenteEffettuarePrenotazione(evento, dateOra);
+			effettuaPrenotazione(evento, dateOra);
 
 			break;
 		case "2":
@@ -148,11 +148,11 @@ class initSteps {
 
 	}
 
-	public static Evento sceltaDelEventoDaParteDelTerminale(ProgrammEventi agenda) {
+	public static Evento selezionaEvento(ProgrammaEventi agenda) {
 		menuPrincipale();
 		switch (scanner.nextLine()) {
 		case "A":
-			Evento evento = popolaEvento();
+			Evento evento = creaEvento();
 			agenda.addEvento(evento);
 
 			return evento;
@@ -164,14 +164,14 @@ class initSteps {
 		return null;
 	}
 
-	static void scelteTerminaleDopoLaSelezioneDellEvento(Evento evento, List<Evento> eventoP, LocalDate dateOra,
-			ProgrammEventi eventiProgrammati) {
+	static void loopSceltaOpzioni(Evento evento, List<Evento> eventoP, LocalDate dateOra,
+			ProgrammaEventi eventiProgrammati) {
 		while (true) {
 			sottoMenu();
-			selezionaCasi(evento, eventoP, dateOra, eventiProgrammati);
+			selezionaOpzioni(evento, eventoP, dateOra, eventiProgrammati);
 
 			System.out.println("vuoi effetuare altre operazioni?");
-			if (!utenteVuoleConfermare(scanner.nextLine())) {
+			if (!rispostaAffermativa(scanner.nextLine())) {
 				System.out.println("Operazioni Concluse");
 				break;
 			}

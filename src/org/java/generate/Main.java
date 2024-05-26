@@ -9,15 +9,15 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] arvs) {
-		LocalDate dateOra = LocalDate.now();
+		LocalDate dataOdierna = LocalDate.now();
 
-		ProgrammEventi eventoProgrammato = new ProgrammEventi("Agenda Prenotazione");
-		initSteps.popolaAgendaEventi(eventoProgrammato);
-		List<Evento> ArrayListEventoPerData = eventoProgrammato.listaDiEventi(dateOra);
+		ProgrammaEventi agendaEventi = new ProgrammaEventi("Agenda Prenotazione");
+		Steps.popolaProgrammaEventi(agendaEventi);
+		List<Evento> ArrayListEventoPerData = agendaEventi.listaDiEventi(dataOdierna);
 
-		Evento e = initSteps.sceltaDelEventoDaParteDelTerminale(eventoProgrammato);
+		Evento eventoSelezionato = Steps.selezionaEvento(agendaEventi);
 
-		initSteps.scelteTerminaleDopoLaSelezioneDellEvento(e, ArrayListEventoPerData, dateOra, eventoProgrammato);
+		Steps.loopSceltaOpzioni(eventoSelezionato, ArrayListEventoPerData, dataOdierna, agendaEventi);
 	}
 
 }

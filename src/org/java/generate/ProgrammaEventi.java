@@ -7,12 +7,12 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ProgrammEventi {
+public class ProgrammaEventi {
 
 	private String titolo;
 	private List<Evento> eventi;
 
-	public ProgrammEventi(String titolo) {
+	public ProgrammaEventi(String titolo) {
 		this.titolo = titolo;
 		this.eventi = new ArrayList<Evento>();
 
