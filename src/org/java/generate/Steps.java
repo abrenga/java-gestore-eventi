@@ -29,7 +29,7 @@ class Steps {
 
 			System.out.println("Posti Totali a disposizione:");
 			String postiTotali = scanner.nextLine();
-
+			
 			System.out.println("Data Evento (formato accettato:dd-MM-yyyy): ");
 			String dataEvento = scanner.nextLine();
 
@@ -116,13 +116,13 @@ class Steps {
 	}
 
 	private static void sottoMenu() {
-		System.out.println("[1] vuoi effetuare prenotazioni");
+		System.out.println("[1]  effetua prenotazioni");
 		System.out.println("[2] disdici prenotazioni");
 		System.out.println("[3] mostra eventi in agenda");
 		System.out.println("[4] rimuovi eventi");
 	}
 
-	private static void selezionaOpzioni(Evento evento, List<Evento> arrayEventiDalavorare, LocalDate dateOra,
+	private static void selezionaOpzioni(Evento evento, LocalDate dateOra,
 			ProgrammaEventi eventiProgrammati) {
 		switch (scanner.nextLine()) {
 		case "1":
@@ -164,11 +164,11 @@ class Steps {
 		return null;
 	}
 
-	static void loopSceltaOpzioni(Evento evento, List<Evento> eventoP, LocalDate dateOra,
+	static void loopSceltaOpzioni(Evento evento, LocalDate dateOra,
 			ProgrammaEventi eventiProgrammati) {
 		while (true) {
 			sottoMenu();
-			selezionaOpzioni(evento, eventoP, dateOra, eventiProgrammati);
+			selezionaOpzioni(evento, dateOra, eventiProgrammati);
 
 			System.out.println("vuoi effetuare altre operazioni?");
 			if (!rispostaAffermativa(scanner.nextLine())) {

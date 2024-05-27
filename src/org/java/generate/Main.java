@@ -13,11 +13,11 @@ public class Main {
 
 		ProgrammaEventi agendaEventi = new ProgrammaEventi("Agenda Prenotazione");
 		Steps.popolaProgrammaEventi(agendaEventi);
-		List<Evento> ArrayListEventoPerData = agendaEventi.listaDiEventi(dataOdierna);
+		
 
 		Evento eventoSelezionato = Steps.selezionaEvento(agendaEventi);
 
-		Steps.loopSceltaOpzioni(eventoSelezionato, ArrayListEventoPerData, dataOdierna, agendaEventi);
+		Steps.loopSceltaOpzioni(eventoSelezionato, dataOdierna, agendaEventi);
 	}
 
 }
